@@ -1,4 +1,4 @@
-#!/home/manuel/.rvm/rubies/ruby-1.9.3-p0/bin/ruby
+#!/usr/bin/env ruby
 
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
 
