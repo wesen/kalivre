@@ -1,0 +1,709 @@
+# Logfile created on 2012-01-24 17:03:53 +0100  [4;36;1mSQL (60.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (126.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (60.3ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateRadiantTables (1)
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "config" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(40) DEFAULT '' NOT NULL, "value" varchar(255) DEFAULT '') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("config")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "key" ON "config" ("key")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "behavior" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "page_parts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "filter" varchar(25), "content" text, "page_id" integer) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("snippets")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "name" ON "snippets" ("name")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "layouts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "content" text, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "admin" integer(1) DEFAULT 0 NOT NULL, "developer" integer(1) DEFAULT 0 NOT NULL, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('1')[0m
+Migrating to InsertInitialData (2)
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('2')[0m
+Migrating to RenameBehaviorColumn (3)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "behavior_id" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "pages"[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "behavior_id" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_pages")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "altered_pages"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('3')[0m
+Migrating to RenameFilterColumn (4)
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_page_parts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "filter_id" varchar(25), "content" text, "page_id" integer) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("page_parts")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "page_parts"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "page_parts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "filter_id" varchar(25), "content" text, "page_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_page_parts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDROP TABLE "altered_page_parts"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("snippets")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_snippets")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "temp_name" ON "altered_snippets" ("name")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "snippets"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_snippets")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('temp_name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("snippets")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE UNIQUE INDEX "name" ON "snippets" ("name")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_snippets"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('4')[0m
+Migrating to AddVirtualColumnToPage (5)
+  [4;36;1mSQL (1.3ms)[0m   [0;1mALTER TABLE "pages" ADD "virtual" boolean DEFAULT 'f' NOT NULL[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('5')[0m
+Migrating to IntegerColumnsToBoolean (6)
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" ORDER BY name[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "admin" integer(1) DEFAULT 0 NOT NULL, "developer" integer(1) DEFAULT 0 NOT NULL, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "users"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "developer" integer(1) DEFAULT 0 NOT NULL, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('temp_login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_users"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f' NOT NULL[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM "users" ORDER BY name[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "developer" integer(1) DEFAULT 0 NOT NULL, "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer, "admin" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('login')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "users"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by" integer, "updated_by" integer, "admin" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('temp_login')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_users"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mALTER TABLE "users" ADD "developer" boolean DEFAULT 'f' NOT NULL[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('6')[0m
+Migrating to RemoveVirtualColumnFromPage (7)
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "behavior_id" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "pages"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "behavior_id" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_pages")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_pages"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('7')[0m
+Migrating to AddVirtualColumnToPageAgain (8)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mALTER TABLE "pages" ADD "virtual" boolean DEFAULT 'f' NOT NULL[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('8')[0m
+Migrating to AddContentTypeFieldToLayout (9)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mALTER TABLE "layouts" ADD "content_type" varchar(40)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('9')[0m
+Migrating to MergeBehaviorsAndPages (10)
+  [4;36;1mMergeBehaviorsAndPages::OldPage Load (0.6ms)[0m   [0;1mSELECT * FROM "pages" [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "type" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "pages"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "type" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_pages")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_pages"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('10')[0m
+Migrating to RenameTypeColumnOnPageToClassName (11)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "pages"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_pages")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_pages"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('11')[0m
+Migrating to CreateExtensionMeta (12)
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "extension_meta" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "schema_version" integer DEFAULT 0, "enabled" boolean DEFAULT 't') [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('12')[0m
+Migrating to AddNotesFieldToUser (13)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mALTER TABLE "users" ADD "notes" text[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('13')[0m
+Migrating to RenameConfigDefaultPartsKey (14)
+  [4;36;1mRadiant::Config Load (0.2ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'default.parts') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('14')[0m
+Migrating to AddOptimisticLocking (15)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mALTER TABLE "pages" ADD "lock_version" integer DEFAULT 0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "layouts" ADD "lock_version" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mALTER TABLE "snippets" ADD "lock_version" integer DEFAULT 0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mALTER TABLE "users" ADD "lock_version" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('15')[0m
+Migrating to AddSessions (16)
+  [4;35;1mSQL (1.4ms)[0m   [0mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" varchar(255), "data" text, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("sessions")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE INDEX "index_sessions_on_session_id" ON "sessions" ("session_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("sessions")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "index_sessions_on_updated_at" ON "sessions" ("updated_at")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('16')[0m
+Migrating to RenameCreatedByUpdatedByColumns (17)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by_id" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "pages"[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by_id" integer, "updated_by" integer, "virtual" boolean DEFAULT 'f' NOT NULL, "lock_version" integer DEFAULT 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_pages")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_pages"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by_id" integer, "updated_by_id" integer, "virtual" boolean DEFAULT 'f' NOT NULL, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "pages"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "slug" varchar(100), "breadcrumb" varchar(160), "class_name" varchar(25), "status_id" integer DEFAULT 1 NOT NULL, "parent_id" integer, "layout_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime, "created_by_id" integer, "updated_by_id" integer, "virtual" boolean DEFAULT 'f' NOT NULL, "lock_version" integer DEFAULT 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_pages")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_pages"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('name')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mPRAGMA index_list("altered_snippets")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_name" ON "altered_snippets" ("name")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "snippets"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_name')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "name" ON "snippets" ("name")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_snippets"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('name')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_snippets")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_name" ON "altered_snippets" ("name")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "snippets"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "snippets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100) DEFAULT '' NOT NULL, "filter_id" varchar(25), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_name')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "name" ON "snippets" ("name")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_snippets"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_layouts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "content_type" varchar(40), "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("layouts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "layouts"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "layouts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "content_type" varchar(40), "lock_version" integer DEFAULT 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_layouts")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_layouts"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_layouts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "content_type" varchar(40), "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("layouts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "layouts"[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TABLE "layouts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "content" text, "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "content_type" varchar(40), "lock_version" integer DEFAULT 0) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_layouts")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_layouts"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_login')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_users"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_login')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_users"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('17')[0m
+Migrating to AddDescriptionAndKeywordsToPages (18)
+  [4;35;1mSQL (0.9ms)[0m   [0mALTER TABLE "pages" ADD "description" varchar(255)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mALTER TABLE "pages" ADD "keywords" varchar(255)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('18')[0m
+Migrating to AddSaltToUsers (19)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mALTER TABLE "users" ADD "salt" varchar(255)[0m
+  [4;35;1mUser Update (0.2ms)[0m   [0mUPDATE "users" SET "salt" = 'sweet harmonious biscuits' [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('19')[0m
+Migrating to AddSessionInfoToUsers (20)
+  [4;35;1mSQL (1.1ms)[0m   [0mALTER TABLE "users" ADD "session_token" varchar(255)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mALTER TABLE "users" ADD "session_expire" datetime[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20')[0m
+Migrating to RemoveSessionExpireFromUsers (21)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255), "session_expire" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "developer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_login')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "altered_users"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('21')[0m
+Migrating to AddIndexes (20081203140407)
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE INDEX "pages_class_name" ON "pages" ("class_name")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_class_name')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "pages_parent_id" ON "pages" ("parent_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_parent_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_class_name')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "pages_child_slug" ON "pages" ("slug", "parent_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_child_slug')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_parent_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_class_name')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE INDEX "pages_published" ON "pages" ("virtual", "status_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("page_parts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE INDEX "parts_by_page" ON "page_parts" ("page_id", "name")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20081203140407')[0m
+Migrating to AddUserLanguage (20090226140109)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mALTER TABLE "users" ADD "language" varchar(255)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090226140109')[0m
+Migrating to RenameDeveloperRoleToDesigner (20090929164633)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "designer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255), "language" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "designer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255), "language" varchar(255)) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('temp_login')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_users"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090929164633')[0m
+Migrating to ChangeUserLanguageToLocale (20091003095744)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "designer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255), "locale" varchar(255)) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "temp_login" ON "altered_users" ("login")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "users"[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(100), "email" varchar(255), "login" varchar(40) DEFAULT '' NOT NULL, "password" varchar(40), "created_at" datetime, "updated_at" datetime, "created_by_id" integer, "updated_by_id" integer, "admin" boolean DEFAULT 'f' NOT NULL, "designer" boolean DEFAULT 'f' NOT NULL, "notes" text, "lock_version" integer DEFAULT 0, "salt" varchar(255), "session_token" varchar(255), "locale" varchar(255)) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('temp_login')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE UNIQUE INDEX "login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_users"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091003095744')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("config")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('key')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("extension_meta")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("layouts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("page_parts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('parts_by_page')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_published')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_child_slug')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_parent_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_class_name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("sessions")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('name')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("config")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('key')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mPRAGMA index_list("extension_meta")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("layouts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("page_parts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('parts_by_page')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_published')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_child_slug')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_parent_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_class_name')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("sessions")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("snippets")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('login')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("config")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('key')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("extension_meta")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("layouts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("page_parts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('parts_by_page')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("pages")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_published')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_child_slug')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_parent_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_class_name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("sessions")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("snippets")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('name')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('login')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("config")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('key')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("extension_meta")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("layouts")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("page_parts")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('parts_by_page')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("pages")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_published')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_child_slug')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('pages_parent_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('pages_class_name')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("sessions")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("snippets")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('name')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_info('login')[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'admin') ORDER BY name LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'admin') LIMIT 1[0m
+  [4;36;1mUser Create (0.3ms)[0m   [0;1mINSERT INTO "users" ("name", "email", "login", "password", "created_at", "updated_at", "created_by_id", "updated_by_id", "admin", "designer", "notes", "lock_version", "salt", "session_token", "locale") VALUES('Administrator', NULL, 'admin', 'd1ee0f974a960cd8c5df98568480cdc5aa595dec', '2012-01-24 16:04:16', '2012-01-24 16:04:16', NULL, NULL, 't', 'f', NULL, 0, '3d2ccc4f479ca36221bdb6fe98dd84d2792a856a', NULL, NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.2ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'admin.title') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.5ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('admin.title', 'Radiant CMS')[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'admin.subtitle') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.4ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('admin.subtitle', 'Publishing for Small Teams')[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'defaults.page.parts') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.4ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('defaults.page.parts', 'body, extended')[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'defaults.page.status') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.4ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('defaults.page.status', 'draft')[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'defaults.page.filter') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.4ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('defaults.page.filter', '')[0m
+  [4;36;1mRadiant::Config Load (0.5ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'session_timeout') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.6ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('session_timeout', '1209600')[0m
+  [4;36;1mRadiant::Config Load (0.4ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mRadiant::Config Load (0.3ms)[0m   [0;1mSELECT * FROM "config" WHERE ("config"."key" = 'default_locale') LIMIT 1[0m
+  [4;35;1mRadiant::Config Create (0.4ms)[0m   [0mINSERT INTO "config" ("key", "value") VALUES('default_locale', 'en')[0m
+  [4;36;1mRadiant::Config Load (0.4ms)[0m   [0;1mSELECT * FROM "config" [0m
+Cache write: Radiant::Config
+Cache write: Radiant.cache_mtime
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mLayout Load (0.1ms)[0m   [0mSELECT "layouts".id FROM "layouts" WHERE ("layouts"."name" = 'Normal') LIMIT 1[0m
+  [4;36;1mLayout Create (0.2ms)[0m   [0;1mINSERT INTO "layouts" ("name", "content", "created_at", "updated_at", "created_by_id", "updated_by_id", "content_type", "lock_version") VALUES('Normal', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+ <head>
+ <title><r:title /></title>
+ <link href="/rss/" rel="alternate" title="RSS" type="application/rss+xml" />
+ <link rel="stylesheet" type="text/css" href="/styles.css" />
+ </head>
+ <body>
+ <r:snippet name="header" />
+ <div id="content">
+ <r:content />
+ <div id="extended">
+ <r:content part="extended" />
+ </div>
+ </div>
+ <r:snippet name="footer" />
+ </body>
+</html>
+', '2012-01-24 16:05:28', '2012-01-24 16:05:28', 1, NULL, NULL, 0)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mLayout Load (0.1ms)[0m   [0mSELECT "layouts".id FROM "layouts" WHERE ("layouts"."name" = 'Stylesheet') LIMIT 1[0m
+  [4;36;1mLayout Create (0.2ms)[0m   [0;1mINSERT INTO "layouts" ("name", "content", "created_at", "updated_at", "created_by_id", "updated_by_id", "content_type", "lock_version") VALUES('Stylesheet', '<r:content />
+', '2012-01-24 16:05:28', '2012-01-24 16:05:28', 1, NULL, 'text/css', 0)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mLayout Load (0.2ms)[0m   [0mSELECT "layouts".id FROM "layouts" WHERE ("layouts"."name" = 'XML Feed') LIMIT 1[0m
+  [4;36;1mLayout Create (0.4ms)[0m   [0;1mINSERT INTO "layouts" ("name", "content", "created_at", "updated_at", "created_by_id", "updated_by_id", "content_type", "lock_version") VALUES('XML Feed', '<r:content />
+', '2012-01-24 16:05:28', '2012-01-24 16:05:28', 1, NULL, 'text/xml', 0)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mSnippet Load (0.2ms)[0m   [0mSELECT "snippets".id FROM "snippets" WHERE ("snippets"."name" = 'header') LIMIT 1[0m
+  [4;36;1mSnippet Create (0.2ms)[0m   [0;1mINSERT INTO "snippets" ("name", "filter_id", "content", "created_at", "updated_at", "created_by_id", "updated_by_id", "lock_version") VALUES('header', NULL, '<div id="header">
+ <h1><r:title /></h1>
+</div>
+<hr />
+', '2012-01-24 16:05:28', '2012-01-24 16:05:28', 1, NULL, 0)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mSnippet Load (0.1ms)[0m   [0mSELECT "snippets".id FROM "snippets" WHERE ("snippets"."name" = 'footer') LIMIT 1[0m
+  [4;36;1mSnippet Create (0.4ms)[0m   [0;1mINSERT INTO "snippets" ("name", "filter_id", "content", "created_at", "updated_at", "created_by_id", "updated_by_id", "lock_version") VALUES('footer', NULL, '<hr />
+<div id="footer">
+ <p>Powered by <a href="http://radiantcms.org/">Radiant CMS</a></p>
+</div>
+', '2012-01-24 16:05:28', '2012-01-24 16:05:28', 1, NULL, 0)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.1ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = '/' AND "pages".parent_id IS NULL) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('Home Page', '/', 'Home', NULL, 100, NULL, 1, '2012-01-24 16:05:28', '2012-01-24 16:05:28', '2012-01-24 17:05:28', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.2ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'file-not-found' AND "pages".parent_id = 1) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('File Not Found', 'file-not-found', 'File Not Found', 'FileNotFoundPage', 100, 1, NULL, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 't', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.1ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'rss' AND "pages".parent_id = 1) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('RSS Feed', 'rss', 'RSS Feed', NULL, 100, 1, 3, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'articles' AND "pages".parent_id = 1) LIMIT 1[0m
+  [4;36;1mPage Create (0.3ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('Articles', 'articles', 'Articles', 'ArchivePage', 100, 1, NULL, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'first-post' AND "pages".parent_id = 4) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('First Post', 'first-post', 'First Post', NULL, 100, 4, NULL, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.1ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'second-post' AND "pages".parent_id = 4) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('Second Post', 'second-post', 'Second Post', NULL, 100, 4, NULL, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPage Load (0.1ms)[0m   [0mSELECT "pages".id FROM "pages" WHERE ("pages"."slug" = 'styles.css' AND "pages".parent_id = 1) LIMIT 1[0m
+  [4;36;1mPage Create (0.4ms)[0m   [0;1mINSERT INTO "pages" ("title", "slug", "breadcrumb", "class_name", "status_id", "parent_id", "layout_id", "created_at", "updated_at", "published_at", "created_by_id", "updated_by_id", "virtual", "lock_version", "description", "keywords") VALUES('Styles', 'styles.css', 'Styles', NULL, 100, 1, 2, '2012-01-24 16:05:29', '2012-01-24 16:05:29', '2012-01-24 17:05:29', 1, NULL, 'f', 0, NULL, NULL)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Cache read: Radiant.cache_mtime
+Cache read: Radiant::Config
+  [4;36;1mPagePart Create (0.2ms)[0m   [0;1mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', '', '<r:find url="/articles/">
+<r:children:each limit="5" order="desc">
+<div class="entry">
+ <h3><r:link /> <small><r:author /></small></h3>
+ <r:content />
+ <r:if_content part="extended"><r:link anchor="extended">Continue Reading&#8230;</r:link></r:if_content>
+</div>
+</r:children:each>
+</r:find>
+', 1)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPagePart Create (0.4ms)[0m   [0mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', 'Textile', 'The file you were looking for could not be found.
+
+Attempted URL: @<r:attempted_url />@
+
+It is possible that you typed the URL incorrectly or that you clicked on a bad link.
+
+"<< Back to Home Page":/
+', 2)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Cache read: Radiant.cache_mtime
+Cache read: Radiant::Config
+  [4;35;1mPagePart Create (0.8ms)[0m   [0mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', '', '<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <channel>
+ <title>Article RSS Feed</title>
+ <link>http://your-web-site.com<r:url /></link>
+ <language>en-us</language>
+ <ttl>40</ttl>
+ <description>The main blog feed for my Web site.</description>
+ <r:find url="/articles/">
+ <r:children:each limit="10">
+ <item>
+ <title><r:title /></title>
+ <description><r:escape_html><r:content /></r:escape_html></description>
+ <pubDate><r:rfc1123_date /></pubDate>
+ <guid>http://your-web-site.com<r:url /></guid>
+ <link>http://your-web-site.com<r:url /></link>
+ </item>
+ </r:children:each>
+ </r:find>
+ </channel>
+</rss>
+', 3)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Cache read: Radiant.cache_mtime
+Cache read: Radiant::Config
+  [4;35;1mPagePart Create (0.2ms)[0m   [0mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', '', '<ul>
+<r:children:each order="desc">
+ <li><r:link /></li>
+</r:children:each>
+</ul>
+', 4)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mPagePart Create (0.5ms)[0m   [0;1mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', 'Textile', 'This post uses "textile":http://www.textism.com/tools/textile/.
+', 5)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mPagePart Create (0.2ms)[0m   [0mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', 'Markdown', 'This post uses **Markdown**.
+', 6)[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Cache read: Radiant.cache_mtime
+Cache read: Radiant::Config
+  [4;35;1mPagePart Create (0.5ms)[0m   [0mINSERT INTO "page_parts" ("name", "filter_id", "content", "page_id") VALUES('body', '', 'body {
+ font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+ font-size: 80%;
+}
+', 7)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT DISTINCT class_name FROM pages WHERE class_name <> '' AND class_name IS NOT NULL[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (135.2ms)[0m   [0;1mCREATE TABLE "config" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(40) DEFAULT '' NOT NULL, "value" varchar(255) DEFAULT '') [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("config")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mInterrupt: : CREATE UNIQUE INDEX "key" ON "config" ("key")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT DISTINCT class_name FROM pages WHERE class_name <> '' AND class_name IS NOT NULL[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT DISTINCT class_name FROM pages WHERE class_name <> '' AND class_name IS NOT NULL[0m
