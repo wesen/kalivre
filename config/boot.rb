@@ -3,6 +3,9 @@
 
 RAILS_ROOT = File.expand_path("#{File.dirname(__FILE__)}/..") unless defined?(RAILS_ROOT)
 
+require 'yaml'
+YAML::ENGINE.yamler = 'syck'
+
 module Rails
   class << self
     def vendor_rails?
